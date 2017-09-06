@@ -27,6 +27,12 @@
 
 		// 初始化地图
 		Map.prototype.init=function(){
+			//多次初始化地图时不重复出现
+			var div=document.getElementsByTagName("div");
+			for(var i=0;i<div.length;i++){
+				document.getElementsByTagName("body")[0].removeChild(div[i]);
+			}
+			
 			//创建DOM元素
 			var _div=this.element=document.createElement("div");
 
@@ -223,7 +229,7 @@
 				this.snake.show();
 			},
 			startGame:function(){
-				console.log(this)
+				// console.log(this)
 				var that=this;
 				var timer=setInterval(function(){
 					that.snake.move();
